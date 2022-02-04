@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import TodaysDate from "./TodaysDate";
 import axios from "axios";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ loaded: false });
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       loaded: true,
-      date: "Friday 11:00",
+      date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       city: response.data.name,
@@ -42,7 +42,9 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>{weatherData.date}</li>
+          <li>
+            <TodaysDate date={weatherData.date} />
+          </li>
           <li>Cloudy</li>
         </ul>
         <div className="row mt-3">
