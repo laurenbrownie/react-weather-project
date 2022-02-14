@@ -13,11 +13,11 @@ export default function WeatherInfo(props) {
         <li>Cloudy</li>
       </ul>
       <div className="row mt-3">
-        <div className="col-6">
+        <div className="col-7">
           <img src={props.data.iconUrl} alt={props.data.description} />
           <TemperatureInfo celsius={props.data.temperature} />
         </div>
-        <div className="col-6">
+        <div className="col-5">
           <ul>
             <li>precipitation: 2%</li>
             <li>humidity: {props.data.humidity}%</li>
